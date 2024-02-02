@@ -1,0 +1,37 @@
+Source: tsrc
+Section: python
+Priority: optional
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Uploaders: Emmanuel Arias <eamanu@debian.org>,
+Build-Depends: debhelper-compat (= 13),
+               dh-python,
+               git <!nocheck>,
+               pybuild-plugin-pyproject,
+               python3-all,
+               python3-all-dev,
+               python3-build <!nocheck>,
+               python3-poetry-core,
+               python3-pytest <!nocheck>,
+               python3-pytest-mock <!nocheck>,
+               python3-setuptools,
+               python3-tomli-w <!nocheck>,
+               python3-virtualenv,
+               python3-unidecode,
+               python3-tabulate,
+               python3-schema,
+               python3-ruamel.yaml,
+               python3-colored-traceback,
+               python3-attr,
+               python3-cli-ui,
+               python3-pygit2
+Standards-Version: 4.6.2
+Homepage: https://your-tools.github.io/tsrc/
+Vcs-Git: https://github.com/your-tools/tsrc.git
+Vcs-Browser: https://github.com/your-tools/tsrc
+Rules-Requires-Root: no
+
+Package: python3-tsrc
+Architecture: all
+Depends: ${misc:Depends},
+         ${python3:Depends},
+Description: Manage groups of git repositories

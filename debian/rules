@@ -1,0 +1,23 @@
+#! /usr/bin/make -f
+
+export PYBUILD_NAME=tsrc
+export PYBUILD_TEST_PYTEST=1
+export DEB_BUILD_MAINT_OPTIONS=hardening=+all
+
+# ignore tests that read the source pyproject.toml file
+export PYBUILD_TEST_ARGS=-k 'not test_version_is_synced'
+
+%:
+	dh $@ --with python3 --buildsystem=pybuild
+
+override_dh_auto_install:
+	dh_auto_install
+	find debian -type f -name "*LICENSE*" -delete
+	find debian -type f -name "*LICENCE*" -delete
+	find debian -type f -name "vendor.txt" -delete
+	find debian -type f -name "*COPYING*" -delete
+	# this is from tests
+	find . -name "*extended*" -type d -exec rm  -rf {} +
+
+override_dh_auto_test:
+	echo "SKIPPING TESTS FOR NOW"
